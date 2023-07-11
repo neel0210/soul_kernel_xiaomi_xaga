@@ -7,11 +7,11 @@ make -j8 CC='ccache clang' ARCH=arm64 LLVM=1 LLVM_IAS=1 O=out gki_defconfig
 # Resources
 THREAD="-j$(nproc --all)"
 
-export CLANG_PATH=$MAIN/clang-r416183b/bin/
+export CLANG_PATH=$HOME/proton/bin/
 export PATH=${CLANG_PATH}:${PATH}
-export CLANG_TRIPLE=aarch64-linux-gnu-
-export CROSS_COMPILE=$MAIN/clang-r416183b/bin/aarch64-linux-gnu- CC=clang CXX=clang++
-
+export CLANG_TRIPLE=$HOME/proton/bin/aarch64-linux-gnu-
+export CROSS_COMPILE=$HOME/proton/bin/aarch64-linux-gnu- CC=clang CXX=clang++
+export KBUILD_COMPILER_STRING="$($HOME/proton/bin/clang --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//')"
 DEFCONFIG="gki_defconfig"
 
 # Paths
